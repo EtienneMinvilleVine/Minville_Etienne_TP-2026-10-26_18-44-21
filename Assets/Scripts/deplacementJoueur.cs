@@ -5,17 +5,21 @@ public class deplacementJoueur : MonoBehaviour
 {
     [SerializeField] float vitesseDeplacement;
 
-     [SerializeField] float vitesseRotation = 100;
+     [SerializeField] float vitesseRotation = 100f;
 
     [SerializeField] float gravite;
 
-    Vector3 deplacementVertical;
+  
 
-     [SerializeField] float decelerationSpeciale;
-
-     Vector3 deplacementSpecial;
+    [SerializeField] float decelerationSpeciale;
 
     [SerializeField] float hauteurSaut;
+
+    Vector3 vitesseDeplacementGeneral;  
+
+    Vector3 vitesseDeplacementVertical;
+
+    Vector3 vitesseDeplacementSpecial;
 
     CharacterController characterController;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -55,7 +59,7 @@ public class deplacementJoueur : MonoBehaviour
     {
         if (characterController.isGrounded)
         {
-            vitesseDeplacementVertical.y = Mathf.sqrt(hauteurSaut * -2f * gravite);
+            vitesseDeplacementVertical.y = Mathf.Sqrt(hauteurSaut * -2f * gravite);
         }
     }
 
@@ -84,6 +88,6 @@ public class deplacementJoueur : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 }

@@ -30,6 +30,8 @@ public class ControlesJoueur : MonoBehaviour
     Vector3 deplacementVertical;
 
     Vector3 deplacementSpecial;
+
+    deplacementJoueur deplacementJoueur;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void OnEnable()
@@ -73,6 +75,7 @@ public class ControlesJoueur : MonoBehaviour
                deplacementJoueur.Dash();
             }
         }
+
          deplacementVertical = deplacementJoueur.CalculerDeplacementVertical();
          deplacementSpecial = deplacementJoueur.CalculerDeplacementSpecial();
 
