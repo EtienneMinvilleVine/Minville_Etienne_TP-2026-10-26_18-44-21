@@ -15,6 +15,9 @@ public class deplacementJoueur : MonoBehaviour
 
     [SerializeField] float hauteurSaut;
 
+    [SerializeField] float minuterieCoyote=1f;
+    [SerializeField] float dureeMaxSautCoyote=1f;
+
     Vector3 vitesseDeplacementGeneral;  
 
     Vector3 vitesseDeplacementVertical;
@@ -57,9 +60,10 @@ public class deplacementJoueur : MonoBehaviour
 
     public void Sauter()
     {
-        if (characterController.isGrounded)
+        if (characterController.isGrounded || minuterieCoyote>0)
         {
             vitesseDeplacementVertical.y = Mathf.Sqrt(hauteurSaut * -2f * gravite);
+            minuterieCoyote = 0;
         }
     }
 
@@ -88,6 +92,13 @@ public class deplacementJoueur : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if(characterController.isGrounded){
+            minuterieCoyote = dureeMaxSautCoyote;
+        }  else{
+            minuterieCoyote -= Time.deltaTime;
+        }  
+
+        minuterieCoyote = Mathf.Clamp(minuterieCoyote,0,dureeMaxSautCoyote);
+
     }
 }
